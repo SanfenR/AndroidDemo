@@ -32,7 +32,5 @@ dependencies {
 
     compile 'com.android.support:support-annotations:24.2.1'
 
-    compile "org.androidannotations:androidannotations-api:4.2.0-SNAPSHOT"
-    compile "org.androidannotations:roboguice-api:4.2.0-SNAPSHOT"
     compile 'org.roboguice:roboguice:3.0.1'
 }
