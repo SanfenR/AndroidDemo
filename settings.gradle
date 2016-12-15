@@ -1,1 +1,1 @@
-include ':app', ':greendaodemo'
+include ':app', ':greendaodemo', ':dagger2demo', ':mvvmdemo', ':annotationdemo'

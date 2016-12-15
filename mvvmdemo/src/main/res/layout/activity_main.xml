@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="user" type="com.mz.sanfen.mvvmdemo.entity.User"/>
+        <variable
+            name="handlers"
+            type="com.mz.sanfen.mvvmdemo.MainActivity"/>
+
+        <variable
+            name="presenter"
+            type="com.mz.sanfen.mvvmdemo.presenter.MainPresenter"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"/>
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.lastName}"
+            android:onClick="@{handlers.onViewClick}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:longClickable="true"
+            android:onClick="@{(view) -> presenter.onText2Click(view, user)}"
+            />
+
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"
+            android:afterTextChanged="@{presenter.afterFirstNameChanged}"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{presenter.completeChanged}"
+            />
+
+    </LinearLayout>
+</layout>
