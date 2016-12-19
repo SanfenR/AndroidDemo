@@ -17,14 +17,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        DBManager dbManager = DBManager.getInstance(this);
-        List<User> userList = dbManager.queryUserList();
-
-        for (User user : userList) {
-            Log.e(TAG, "onCreate: " + "queryUserList--after--->" + user.getId() + "---" + user.getName()+"--"+user.getAge());
-        }
-
     }
 }

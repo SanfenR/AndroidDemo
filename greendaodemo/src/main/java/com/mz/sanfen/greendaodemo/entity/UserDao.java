@@ -43,6 +43,22 @@ public class UserDao extends AbstractDao<User, Long> {
         this.daoSession = daoSession;
     }
 
+    /** Creates the underlying database table. */
+    public static void createTable(Database db, boolean ifNotExists) {
+        String constraint = ifNotExists? "IF NOT EXISTS ": "";
+        db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"NAME\" TEXT NOT NULL ," + // 1: name
+                "\"AGE\" INTEGER NOT NULL ," + // 2: age
+                "\"BLOG_ID\" INTEGER);"); // 3: blogId
+    }
+
+    /** Drops the underlying database table. */
+    public static void dropTable(Database db, boolean ifExists) {
+        String sql = "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + "\"USER\"";
+        db.execSQL(sql);
+    }
+
     @Override
     protected final void bindValues(DatabaseStatement stmt, User entity) {
         stmt.clearBindings();

@@ -2,12 +2,10 @@ package com.mz.sanfen.greendaodemo.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.NotNull;
-import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.ToOne;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+import org.greenrobot.greendao.annotation.ToOne;
 
 /**
  * @author MZ
@@ -15,10 +13,7 @@ import org.greenrobot.greendao.DaoException;
  * @date 16/12/15.
  */
 
-@Entity(
-        active = true,
-        nameInDb = "USER",
-        createInDb = false)
+@Entity
 public class User {
 
     @Id(autoincrement = true)
@@ -28,6 +23,7 @@ public class User {
     private String name;
 
     private int age;
+
 
     private Long blogId;
 
@@ -41,9 +37,6 @@ public class User {
     /** Used for active entity operations. */
     @Generated(hash = 1507654846)
     private transient UserDao myDao;
-
-    @Generated(hash = 384172391)
-    private transient Long blog__resolvedKey;
 
     @Generated(hash = 1535784894)
     public User(Long id, @NotNull String name, int age, Long blogId) {
@@ -60,18 +53,23 @@ public class User {
     public Long getId() {
         return this.id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public int getAge() {
         return this.age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -83,6 +81,9 @@ public class User {
     public void setBlogId(Long blogId) {
         this.blogId = blogId;
     }
+
+    @Generated(hash = 384172391)
+    private transient Long blog__resolvedKey;
 
     /** To-one relationship, resolved on first access. */
     @Generated(hash = 1907406751)
@@ -155,4 +156,5 @@ public class User {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getUserDao() : null;
     }
+
 }
